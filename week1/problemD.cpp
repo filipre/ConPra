@@ -5,6 +5,31 @@
 
 typedef std::array<int, 5> chessTeam;
 
+bool compare(const chessTeam &team1, const chessTeam &team2)
+{
+    if(team1[0] != team2[0])
+    {
+        return team1[0] > team2[0];
+    }
+    if(team1[1] != team2[1])
+    {
+        return team1[1] > team2[1];
+    }
+    if(team1[2] != team2[2])
+    {
+        return team1[2] > team2[2];
+    }
+    if(team1[3] != team2[3])
+    {
+        return team1[3] > team2[3];
+    }
+    if(team1[4] != team2[4])
+    {
+        return team1[4] > team2[4];
+    }
+    return false;
+}
+
 int main()
 {
     std::ios_base::sync_with_stdio(false);
@@ -12,6 +37,7 @@ int main()
     int t;
     std::cin >> t;
 
+    std::vector<chessTeam> teams;
     for (int i=0; i<t; ++i)
     {
         std::cout << "Case #" << i+1 << ":\n";
@@ -20,7 +46,6 @@ int main()
         std::cin >> n;
 
         // get all n chess teams with 5 players each
-        std::vector<chessTeam> teams;
         teams.resize(n);
         for (int j=0; j<n; ++j)
         {
@@ -30,24 +55,16 @@ int main()
         }
 
         // lets sort that vector
-        std::sort(teams.begin(), teams.end(), [](const chessTeam &team1, const chessTeam &team2)
-        {
-            for (int k=0; k<5; ++k)
-            {
-                if (team1[0] != team2[0])
-                {
-                    return team1[0] > team2[0];
-                }
-            }
-            return true; // all are equal so it does not matter
-        });
+        std::sort(teams.begin(), teams.end(), compare);
 
         // print result
         for (int j=0; j<n; ++j)
         {
             std::cout << teams[j][0] << " " << teams[j][1] << " " << teams[j][2] << " " << teams[j][3] << " " << teams[j][4] << "\n";
         }
+
+        teams.clear();
     }
-    
+
     return 0;
 }

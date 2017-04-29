@@ -86,7 +86,7 @@ int main()
 
     for (int i=0; i<t; ++i)
     {
-        std::cout << "Case #" << i << ": ";
+        std::cout << "Case #" << i+1 << ": ";
         std::string problem;
         std::cin >> problem;
         std::cout << solveProblem(problem) << '\n';
