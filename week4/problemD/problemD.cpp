@@ -5,6 +5,7 @@
 #include <stack>
 #include <queue>
 #include <algorithm>
+#include <set>
 
 /*
     Corner cases to think about:
@@ -30,13 +31,39 @@ struct Edge
 typedef std::vector<std::vector<Edge>> graph_t;
 const weight_t weightMax = INT32_MAX;
 
+struct Pq_Edge
+{
+    Edge e;
+    node_t pred;
+};
+
 struct Supermarket
 {
     node_t city;
     weight_t min;
 };
 
-weight_t dijkstra(const node_t start, const node_t end, const graph_t &graph, const int n)
+void printPred(const std::vector<node_t> &pred, int n)
+{
+    std::cout << "Pred: ";
+    for (int i=1; i<=n; ++i)
+    {
+        std::cout << pred[i] << " ";
+    }
+    std::cout << "\n";
+}
+
+weight_t findDist(const node_t node1, const node_t node2, const graph_t &graph)
+{
+    for (const auto &edge : graph[node1])
+    {
+        if (edge.to == node2)
+            return edge.weight;
+    }
+    return weightMax;
+}
+
+weight_t dijkstra(const node_t start, const node_t end, const graph_t &graph, const int n, std::vector<node_t> &pred)
 {
     std::vector<bool> visited(n+1);
     std::vector<weight_t> distance(n+1);
@@ -49,37 +76,40 @@ weight_t dijkstra(const node_t start, const node_t end, const graph_t &graph, co
 
     visited[start] = true;
     distance[start] = 0;
+    pred[start] = 0; // 0 does not exist
 
-    auto cmp = [](Edge left, Edge right) { return (left.weight > right.weight); }; // TODO
-    std::priority_queue<Edge, std::vector<Edge>, decltype(cmp)> pq(cmp);
+    auto cmp = [](Pq_Edge left, Pq_Edge right) { return (left.e.weight > right.e.weight); }; // TODO
+    std::priority_queue<Pq_Edge, std::vector<Pq_Edge>, decltype(cmp)> pq(cmp);
 
     // printDistances(distance, n);
     // printVisited(visited, n);
 
     for (const auto &edge : graph[start])
     {
-        pq.push(edge);
+        pq.push({edge, start});
     }
 
     // not all visited
     while (!pq.empty())
     {
-        Edge x = pq.top();
+        Pq_Edge x = pq.top();
         pq.pop();
 
         // std::cout << "PQ top: " <<  x.to << ", w: " << x.weight << "\n";
 
-        if (!visited[x.to])
+        if (!visited[x.e.to])
         {
-            visited[x.to] = true;
-            distance[x.to] = x.weight;
-            for (const auto &edge : graph[x.to])
-                pq.push({edge.to, distance[x.to] + edge.weight});
+            visited[x.e.to] = true;
+            distance[x.e.to] = x.e.weight;
+            pred[x.e.to] = x.pred;
+            for (const auto &edge : graph[x.e.to])
+                pq.push({{edge.to, distance[x.e.to] + edge.weight}, x.e.to});
 
         }
 
         // printDistances(distance, n);
         // printVisited(visited, n);
+        // printPred(pred, n);
     }
 
     return distance[end];
@@ -105,6 +135,7 @@ void printTime(weight_t mins)
 
 int main()
 {
+    printTime(weightMax);
     std::ios_base::sync_with_stdio(false);
 
     int t;
@@ -150,35 +181,69 @@ int main()
         }
 
         // TODO see solution above
+        std::vector<node_t> pred (n+1);
+        weight_t shortestPath = dijkstra(a, b, graph, n, pred); // from lea to peter
+        weight_t shortestPath = dijkstra(b, a, graph, n, pred2); // calc this since there might be a shorter way to peter from the supermarket
+        // printPred(pred, n);
+        if (shortestPath == weightMax)
+        {
+            std::cout << "impossible\n";
+            continue;
+        }
 
-        // get all distances from Lea to an supermarket
+        // create set that contains all ffrom the shortest path
+        std::set<node_t> shortestPathMembers;
+        node_t traverseNode = b;
+        shortestPathMembers.insert(traverseNode);
+        do {
+            traverseNode = pred[traverseNode]; // start from peter
+            shortestPathMembers.insert(traverseNode);
+        } while(traverseNode != a);
+
+        // for (auto it=shortestPathMembers.begin(); it!=shortestPathMembers.end(); ++it)
+        //     std::cout << *it << " ";
+        // std::cout << '\n';
+
         weight_t currentMin = weightMax;
+        weight_t currentTime;
+
+        // now add supermarekt times to shortestPath
         for (const auto &supermarket : supermarkets)
         {
-            // if either dijkstra returns max value, then there isn't any connection
-            weight_t timeToSupermarket = dijkstra(a, supermarket.city, graph, n);
-            if (timeToSupermarket == weightMax)
+            if (shortestPathMembers.count(supermarket.city))
             {
-                // std::cout << "impossible\n";
+                // supermarket city is directlz on the shoretest path
+                // printTime(shortestPath + supermarket.min); // TODO only which are in the shortest path, prec!!
+                currentTime = shortestPath + supermarket.min;
+            }
+            else if (pred[supermarket.city] == 0)
+            {
+                // not reachable. continue
                 continue;
             }
-
-            weight_t timeToPeter =  dijkstra(supermarket.city, b, graph, n);
-            if (timeToPeter == weightMax)
+            else
             {
-                // std::cout << "impossible\n";
-                continue;
+                // supermarkt is somehwere else... go there and then back to the shortest path
+                // sum up distances until one get passed by the shortest path.
+                // 2 * travserse path + time supermarket
+                // fuck.. traverse again
+                int additionalMins = 0;
+                node_t currentNode = supermarket.city;
+
+                while(!shortestPathMembers.count(currentNode))
+                {
+                    additionalMins += (2 * findDist(currentNode, pred[currentNode], graph));
+                    currentNode = pred[currentNode];
+                }
+
+                currentTime = shortestPath + additionalMins + supermarket.min;
             }
 
-            weight_t currentTime = timeToSupermarket + supermarket.min + timeToPeter;
             if (currentTime < currentMin)
             {
                 currentMin = currentTime;
             }
 
-            // std::cout << a << " - " << supermarket.city << ": " << dijkstra(a, supermarket.city, graph, n) << "\n";
-            // std::cout << supermarket.min << "\n";
-            // std::cout << supermarket.city << " - " << b << ": " << dijkstra(supermarket.city, b, graph, n) << "\n";
         }
 
         if (currentMin == weightMax)
