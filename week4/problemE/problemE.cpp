@@ -48,8 +48,15 @@ bool bellmanFord(int32_t start, const graph_t &graph, int n, std::vector<int32_t
     int tempCounter = 0;
     while( !Q.empty() )
     {
+        ++tempCounter;
+        // std::cout << "dist[start]: " << dist[start] << "\n";
+        // std::cout << "tempCounter: " << tempCounter << "\n";
+        if (dist[start] < 0)
+            std::cout << tempCounter << "\n";
+
         // std::cout << "dist: ";
         // printVec(dist, n);
+
 
         int x = Q.front();
         // std::cout << "x front: " << x << "\n";
@@ -75,11 +82,7 @@ bool bellmanFord(int32_t start, const graph_t &graph, int n, std::vector<int32_t
                 }
            }
            Q.pop_front();
-           ++tempCounter;
        }
-
-       std::cout << "dist[start]: " << dist[start] << "\n";
-       std::cout << "tempCounter: " << tempCounter << "\n";
    }
 
    return true;
