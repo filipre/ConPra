@@ -9,7 +9,7 @@
 #include <string>
 
 typedef std::vector<std::vector<bool>> chessboard_t;
-
+typedef std::priority_queue<int, std::vector<int>, std::greater<int> > pqRows_t;
 
 void printChessboard(const chessboard_t &solution, int n)
 {
@@ -28,19 +28,38 @@ void printChessboard(const chessboard_t &solution, int n)
 
 bool checkPartialSolution(const chessboard_t &solution, int i, int j, int n)
 {
-    // TODO ????
-    // // horizontal left
+    // // vertical up
+    // for (int k=1; k<i; ++k)
+    //     if (solution[k][j])
+    //         return false;
+    //
+    // // diagonal left-up
+    // for (int k=1; k<=std::min(i-1, j-1); ++k)
+    //     if (solution[i-k][j-k])
+    //         return false;
+    //
+    // // diagnoal right-up
+    // for (int k=1; k<=std::min(i-1, n-j); ++k)
+    //     if (solution[i-k][j+k])
+    //         return false;
+
+    // horizontal left
     // for (int k=1; k<j; ++k)
     //     if (solution[i][k])
     //         return false;
-    //
+
     // // horizonal right
     // for (int k=j+1; k<=n; ++k)
     //     if (solution[i][k])
     //         return false;
 
-    // vertical up
+    // // vertical up
     for (int k=1; k<i; ++k)
+        if (solution[k][j])
+            return false;
+
+    // // vertical down
+    for (int k=i+1; k<=n; ++k)
         if (solution[k][j])
             return false;
 
@@ -54,14 +73,25 @@ bool checkPartialSolution(const chessboard_t &solution, int i, int j, int n)
         if (solution[i-k][j+k])
             return false;
 
+    // diagnoal right-down
+    for (int k=1; k<=std::min(n-i, j-1); ++k)
+        if (solution[i+k][j-k])
+            return false;
+
+    // diagnoal left-down
+    for (int k=1; k<=std::min(n-i, n-j); ++k)
+        if (solution[i+k][j+k])
+            return false;
+
+
+
+
     return true;
 }
 
 
-
 bool checkWholeChessboard(chessboard_t board, int n)
 {
-
     for (int row=1; row<=n; ++row)
     {
         // check that there is at most one queen
@@ -87,48 +117,36 @@ bool checkWholeChessboard(chessboard_t board, int n)
     return true;
 }
 
-bool checkAtTheEnd(chessboard_t board, int n)
+// bool checkAtTheEnd(chessboard_t board, int n)
+// {
+//     bool check1 = checkWholeChessboard(board, n);
+//     if (!check1)
+//         return false;
+//
+//     int sum = 0;
+//     for (int i=1; i<=n; ++i)
+//     {
+//         for (int j=1; j<=n; ++j)
+//         {
+//             if (board[i][j])
+//                 ++sum;
+//         }
+//     }
+//
+//     if (sum != n)
+//         return false;
+//
+//     return true;
+// }
+
+// assume that in our row no other queen is placed
+void findSolutionsForRow(const chessboard_t &currentSolution, int row, int n, std::vector<chessboard_t> &allSolutions)
 {
-    bool check1 = checkWholeChessboard(board, n);
-    if (!check1)
-        return false;
-
-    int sum = 0;
-    for (int i=1; i<=n; ++i)
-    {
-        for (int j=1; j<=n; ++j)
-        {
-            if (board[i][j])
-                ++sum;
-        }
-    }
-
-    if (sum != n)
-        return false;
-
-    return true;
-}
-
-void findSolutionsForRow(const chessboard_t &currentSolution, int row, int n, std::vector<bool> &rowsToConsider, std::vector<bool> &columnsToConsider, std::vector<chessboard_t> &allSolutions)
-{
-    // // check if there is already a queen placed
-    // for (int column=1; column<=n; ++column)
-    // {
-    //     if (currentSolution[row][column])
-    //     {
-    //         allSolutions.push_back(currentSolution);
-    //         return;
-    //     }
-    // }
-
-    // seems like that is not the case.
     for (int column=1; column<=n; ++column)
     {
-        if (columnsToConsider[])
         chessboard_t possibleSolution (currentSolution);
         possibleSolution[row][column] = true;
         bool works = checkPartialSolution(possibleSolution, row, column, n);
-        // std::cout << "works: " << works << "\n";
         if (works)
         {
             allSolutions.push_back(possibleSolution);
@@ -136,45 +154,24 @@ void findSolutionsForRow(const chessboard_t &currentSolution, int row, int n, st
     }
 }
 
-bool backtrack(const chessboard_t &currentSolution, int row, int n, std::vector<bool> &rowsToConsider, std::vector<bool> &columnsToConsider, int queensleft)
+bool backtrack(const chessboard_t &currentSolution, int n, pqRows_t pqRows)
 {
-    // if there is already something in that row, we don't have to do anything
-    if (!rowsToConsider[row])
-    {
-        return backtrack(currentSolution, row+1, n, rowsToConsider, columnsToConsider, queensleft)
-    }
-
-    if (queensleft == 0)
+    // we were able to place a queen in every row
+    if (pqRows.empty())
     {
         printChessboard(currentSolution, n);
-        return true; // we are done
+        return true;
     }
 
-    if (row > n)
-    {
-        // if row exceeds but there are still queens to be put on the board, we don't have a solution
-        return false;
-    }
-
-
-    // std::cout << "row: " << row << "\n";
-    // if (row > n)
-    // {
-    //     bool everythingworks = checkAtTheEnd(currentSolution, n);
-    //     if (!everythingworks)
-    //     {
-    //         return false;
-    //     }
-    //     printChessboard(currentSolution, n);
-    //     return true;
-    // }
+    int nextRow = pqRows.top();
+    pqRows.pop();
 
     std::vector<chessboard_t> nextSolutions;
-    findSolutionsForRow(currentSolution, row, n, nextSolutions);
+    findSolutionsForRow(currentSolution, nextRow, n, nextSolutions);
+
     for (const auto &nextSolution : nextSolutions)
     {
-        // TODO: we should only generate valid solutions
-        bool result = backtrack(nextSolution, row+1, n);
+        bool result = backtrack(nextSolution, n, pqRows);
         if (result)
         {
             return true;
@@ -298,7 +295,6 @@ bool backtrack(const chessboard_t &currentSolution, int row, int n, std::vector<
 //     return false;
 // }
 
-
 int main()
 {
     std::ios_base::sync_with_stdio(false);
@@ -316,11 +312,9 @@ int main()
         chessboard_t solution (n+1, std::vector<bool>(n+1));
 
         std::vector<bool> rowsToConsider (n+1);
-        std::vector<bool> columnsToConsider (n+1);
         for (int k=1; k<=n; ++k)
         {
             rowsToConsider[k] = true;
-            columnsToConsider[k] = true;
         }
 
         for (int i=1; i<=n; ++i)
@@ -333,7 +327,6 @@ int main()
                 {
                     solution[i][j] = true;
                     rowsToConsider[i] = false;
-                    columnsToConsider[j] = false;
                 }
             }
         }
@@ -345,6 +338,15 @@ int main()
             continue;
         }
 
+        // create pq for rows
+        pqRows_t pqRows;
+        for (int i=1; i<=n; ++i)
+        {
+            if (rowsToConsider[i])
+            {
+                pqRows.push(i);
+            }
+        }
 
 
 
@@ -354,34 +356,7 @@ int main()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        bool works = backtrack(solution, 1, n);
+        bool works = backtrack(solution, n, pqRows);
         if (!works)
         {
             std::cout << "impossible\n";

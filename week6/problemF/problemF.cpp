@@ -16,6 +16,99 @@ typedef std::vector<int> categories_t;
 typedef std::vector<int> precedence_t;
 typedef std::vector<int> precedenceLevel_t;
 
+typedef int32_t node_t;
+typedef std::vector<std::vector<node_t>> graph_t;
+
+
+
+
+
+
+
+
+void topologicalSort(const graph_t &graph, const graph_t &graphInv, int n, std::vector<node_t> &order, std::vector<node_t> &predecessors)
+{
+    for (int i=1; i<=n; ++i)
+    {
+        order[i] = INT32_MAX;
+        predecessors[i] = graphInv[i].size();
+        // std::cout << predecessors[i] << " ";
+    }
+    // std::cout << "\n";
+    std::stack<node_t> topo_stack;
+    int counter = 1;
+
+    // identify start vertex
+    std::vector<node_t> startVertex;
+    for (int vertex=1; vertex<=n; ++vertex)
+    {
+        // std::cout << "new vertex: " << vertex << '\n';
+        if (predecessors[vertex] == 0)
+        {
+            startVertex.push_back(vertex);
+        }
+    }
+
+    // work through start vertexes
+    for (const auto &vertex : startVertex)
+    {
+        topo_stack.push(vertex);
+        while(!topo_stack.empty())
+        {
+            node_t v = topo_stack.top();
+            topo_stack.pop();
+            order[v] = counter;
+            counter = counter + 1;
+            // std::cout << "gonna interate over graph["<< v << "]\n";
+            for (node_t u : graph[v])
+            {
+                // std::cout << "gonna decrease: " << u << "\n";
+                predecessors[u] = predecessors[u] - 1;
+                if (predecessors[u] == 0)
+                {
+                    // std::cout << "add " << u << " to topo_stack\n";
+                    topo_stack.push(u);
+                }
+            }
+        }
+    }
+}
+
+bool hasCycle(std::vector<node_t> &predecessors, int n)
+{
+    for (int i=1; i<=n; ++i)
+        if (predecessors[i] > 0)
+            return true;
+
+    return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 void printSchedule(const schedule_t &schedule, int n)
@@ -190,6 +283,9 @@ int main()
         categories_t categories (n+1);
         precedence_t precedence (n+1);
 
+        graph_t graph (n+1);
+        graph_t graphInv (n+1); // to get predecessors
+
         for (int i=1; i<=n; ++i)
         {
             int c_i, p_i;
@@ -198,7 +294,29 @@ int main()
 
             std::cin >> p_i; // task that needs to be finished first (no prec has -1)
             precedence[i] = p_i;
+
+            if (p_i != -1)
+            {
+                graph[i].push_back(p_i);
+                graphInv[p_i].push_back(i);
+            }
+
+
+
         }
+
+        // first check if cycle exists
+        std::vector<node_t> order (n+1); // ignore 0
+        std::vector<node_t> predecessors (n+1);
+        topologicalSort(graph, graphInv, n, order, predecessors);
+        if (hasCycle(predecessors, n))
+        {
+            std::cout << "impossible\n";
+            continue; // lets proceed with the next test case
+        }
+
+
+
 
         // for (int i=1; i<=n; ++i)
         // {

@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="fragment" content="!">
+  <title>Greedy is Good  &#8211;  topcoder</title>
+  <meta name="description" content="">
+  <meta name="author" content="@topcoder" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UgEGVFNbGwYGXVZaBgQ="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,n,e)])}catch(s){try{i("ierr",[s,c.now(),!0])}catch(u){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t){i("err",[t,c.now()])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,n,e){u&&(d+=1)}),s.on("fn-err",function(t,n,e){u&&(this.thrown=!0,o(e))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(18)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(18)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(18)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(18)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(18)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];n.exports=u;var y=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(m,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}finally{c.emit("fn-end",[f.now()],e)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],16:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],17:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],18:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=h(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([g,e,r,a]),a}}function p(t,n){v[t]=h(t).concat(n)}function h(t){return v[t]||[]}function m(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var v={},y={},g={on:p,emit:e,get:m,listeners:h,context:n,buffer:w,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(15),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!x++){var t=b.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=l.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(15),u=t("ee"),d=window,l=d.document,p="addEventListener",h="attachEvent",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p]("DOMContentLoaded",i,!1),d[p]("load",r,!1)):(l[h]("onreadystatechange",o),d[h]("onload",r)),c("mark",["firstbyte",s],null,"api");var x=0,E=t(17)},{}]},{},["loader",2,10,4,3]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="https://www.topcoder.com/wp-content/themes/tcs-responsive/favicon.ico" />
+
+    <!-- External JS -->
+  <!--[if lt IE 9]>
+  <script src="/js/html5shiv.js" type="text/javascript"></script>
+  <script src="/js/respond.min.js" type="text/javascript"></script>
+  <script src="/js/modernizr.js" type="text/javascript"></script>
+  <link rel = "stylesheet" href = "/css/ie.css ? v = 201407282" / >
+  <![endif]-->
+  <script type="text/javascript">
+    var wpUrl = "https://www.topcoder.com";
+    var tcApiRUL = 'https://api.topcoder.com/v2';
+    var myFiltersURL = '//lc1-user-settings-service.herokuapp.com';
+    var siteURL = 'https://www.topcoder.com';
+    var communityURL = '//community.topcoder.com';
+    var base_url = 'https://www.topcoder.com/wp-content/themes/tcs-responsive';
+    var stylesheet_dir = 'https://www.topcoder.com/wp-content/themes/tcs-responsive/css';
+    var autoRegister = '';
+    var timezone_string = "America/New_York";
+    var challengeType;
+    var cbApiURL = 'https://coderbits.com';
+  </script>
+
+<link rel='stylesheet' id='layerslider-css'  href='https://www.topcoder.com/wp-content/plugins/LayerSlider/static/css/layerslider.css?ver=5.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='ls-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='tchook-style-css'  href='https://www.topcoder.com/wp-content/plugins/TcApi-hookup/includes/css/tcapi.css?ver=3.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='tchook-selectyze-style-css'  href='https://www.topcoder.com/wp-content/plugins/TcApi-hookup/includes/css/Selectyze.jquery.css?ver=3.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='advanced-responsive-video-embedder-css'  href='https://www.topcoder.com/wp-content/plugins/advanced-responsive-video-embedder/public/advanced-responsive-video-embedder-public.css?ver=6.1.2' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-lightbox-fancybox-css'  href='https://www.topcoder.com/wp-content/plugins/responsive-lightbox/assets/fancybox/jquery.fancybox-1.3.4.css?ver=1.5.7' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-syntax-css-css'  href='https://www.topcoder.com/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='default-css'  href='https://www.topcoder.com/mf/dist/css/default.min.css?ver=3.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='page-list-style-css'  href='https://www.topcoder.com/wp-content/plugins/page-list/css/page-list.css?ver=4.2' type='text/css' media='all' />
+<!-- This site uses the Yoast Google Analytics plugin v5.2.7 - Universal enabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-6340959-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('require', 'displayfeatures');
+	__gaTracker('send','pageview');
+
+</script>
+<!-- / Yoast Google Analytics --><script type='text/javascript' src='https://www.topcoder.com/wp-content/plugins/LayerSlider/static/js/greensock.js?ver=1.11.8'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js?ver=3.9.1'></script>
+<script>window.jQuery || document.write('<script src="https://www.topcoder.com/wp-content/themes/tcs-responsive/js/vendor/jquery/jquery.js"><\/script>')</script>
+<script type='text/javascript' src='https://www.topcoder.com/wp-content/plugins/LayerSlider/static/js/layerslider.kreaturamedia.jquery.js?ver=5.4.0'></script>
+<script type='text/javascript' src='https://www.topcoder.com/wp-content/plugins/LayerSlider/static/js/layerslider.transitions.js?ver=5.4.0'></script>
+<script type='text/javascript' src='https://www.topcoder.com/wp-content/plugins/responsive-lightbox/assets/fancybox/jquery.fancybox-1.3.4.js?ver=1.5.7'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"fancybox","selector":"lightbox","customEvents":"","activeGalleries":"0","modal":"0","showOverlay":"1","showCloseButton":"1","enableEscapeButton":"1","hideOnOverlayClick":"1","hideOnContentClick":"0","cyclic":"0","showNavArrows":"1","autoScale":"1","scrolling":"yes","centerOnScroll":"1","opacity":"1","overlayOpacity":"70","overlayColor":"#666","titleShow":"1","titlePosition":"outside","transitions":"fade","easings":"swing","speeds":"300","changeSpeed":"300","changeFade":"100","padding":"5","margin":"5","videoWidth":"1080","videoHeight":"720"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.topcoder.com/wp-content/plugins/responsive-lightbox/js/front.js?ver=1.5.7'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.topcoder.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.topcoder.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Introduction to Graphs and Their Data Structures: Section 3' href='https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-3/' />
+<link rel='next' title='Dynamic Programming &#8211; From Novice to Advanced' href='https://www.topcoder.com/community/data-science/data-science-tutorials/dynamic-programming-from-novice-to-advanced/' />
+<meta name="generator" content="WordPress 3.9.1" />
+<link rel='shortlink' href='https://www.topcoder.com/?p=15616' />
+<meta name="google-site-verification" content="UA-6340959-1" />
+<meta name="google-publisher-plugin-pagetype" content="page"><meta name="google-site-verification" content="13nbPcn6VRWD2zdq-CEG0LbT00aOwSyhofA3OAEmbEI" /><meta name="google-site-verification" content="13nbPcn6VRWD2zdq-CEG0LbT00aOwSyhofA3OAEmbEI" /><meta name="google-site-verification" content="13nbPcn6VRWD2zdq-CEG0LbT00aOwSyhofA3OAEmbEI" /><meta name="google-site-verification" content="p0OVxcrMQ2HYDsGgaRLRS9bsXuXmjKVcTGZnXNphIUI" />	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+  <style>
+    .btn, a.btn, .blogCategoryMenu a, .searchBox input, .subscribeBox input {
+      behavior: url("https://www.topcoder.com/wp-content/themes/tcs-responsive/css/PIE.htc");
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+<div id="wrapper" class="tcssoUsingJS">
+<div class="ng-header-bootstrap"></div>
+<!-- Bugfix: I-108496 hidden element needed for non-firefox browsers to detect cache-persist status of page, used for above code to display member details -->
+<input type='hidden' id='cache-persist'>
+  <!-- /#header -->
+
+<script type="text/javascript">
+	var siteurl = "https://www.topcoder.com";
+</script>
+<div class="content">
+	<div id="main">
+
+		<!-- Start Overview Page-->
+		<div class="pageTitleWrapper">
+			<div class="pageTitle container">
+				<h2 class="overviewPageTitle GreedyisGoodPageTitle">Greedy is Good</h2>
+			</div>
+		</div>
+
+
+
+
+		<article id="mainContent" class="splitLayout overviewPage">
+			<div class="container">
+				<div class="rightSplit  grid-3-3">
+					<div class="mainStream postContent pageContent grid-2-3">
+
+						<p>
+	By <strong><a class="tc_coder coder" href="https://www.topcoder.com/member-profile/supernova" style="color: #6666FF">supernova</a></strong> &#8212; <em>topcoder member</em><br />
+<a href="http://apps.topcoder.com/forums/?module=ThreadList&#038;forumID=505840">Discuss this article in the forums</a>
+</p>
+<p>
+	John Smith is in trouble! He is a topcoder member and once he learned to master the &quot;Force&quot; of dynamic programming, he began solving problem after problem. But his once obedient computer acts quite unfriendly today. Following his usual morning ritual, John woke up at 10 AM, had a cup of coffee and went to solve a problem before breakfast. Something didn&#8217;t seem right from the beginning, but based on his vast newly acquired experience, he wrote the algorithm in a flash. Tired of allocating matrices morning after morning, the computer complained: <strong>&quot;Segmentation fault!&quot;</strong>. Despite his empty stomach, John has a brilliant idea and gets rid of his beloved matrix by adding an extra &quot;for cycle&quot;. But the computer cries again: <strong>&quot;Time limit exceeded!&quot;</strong>
+</p>
+<p>
+	Instead of going nuts, John makes a radical decision. Enough programming, he says! He decides to take a vacation as a reward for his hard work.
+</p>
+<p>
+	Being a very energetic guy, John wants to have the time of his life! With so many things to do, it is unfortunately impossible for him to enjoy them all. So, as soon as he eats his breakfast, he devises a &quot;Fun Plan&quot; in which he describes a schedule of his upcoming activities:
+</p>
+<table class="formFrame" width="400" cellpadding="6" cellspacing="2" align="center" style="visibility: visible;">
+	<tbody>
+		<tr class="sidebarTitle" nowrap="nowrap">
+			<td>ID</td>
+			<td>Scheduled Activity</td>
+			<td>Time Span</td>
+		</tr>
+		<tr class="GAtableText">
+			<td>1</td>
+			<td>Debug the room </td>
+			<td>Monday, 10:00 PM &#8211; Tuesday, 1:00 AM</td>
+		</tr>
+		<tr class="GAtableText">
+			<td>2</td>
+			<td>Enjoy a trip to Hawaii</td>
+			<td>Tuesday, 6:00 AM &#8211; Saturday, 10:00 PM</td>
+		</tr>
+		<tr class="GAtableText">
+			<td>3</td>
+			<td>Win the Chess Championship</td>
+			<td>Tuesday, 11:00 AM &#8211; Tuesday, 9:00 PM</td>
+		</tr>
+		<tr class="GAtableText">
+			<td>4</td>
+			<td>Attend the Rock Concert</td>
+			<td>Tuesday, 7:00 PM &#8211; Tuesday, 11:00 PM</td>
+		</tr>
+		<tr class="GAtableText">
+			<td>5</td>
+			<td>Win the Starcraft Tournament</td>
+			<td>Wednesday, 3:00 PM &#8211; Thursday, 3:00 PM</td>
+		</tr>
+		<tr class="GAtableText">
+			<td>6</td>
+			<td>Have some paintball fun</td>
+			<td>Thursday, 10:00 AM &#8211; Thursday, 4:00 PM</td>
+		</tr>
+		<tr class="GAtableText">
+			<td>7</td>
+			<td>Participate in the topcoder Single Round Match</td>
+			<td>Saturday, 12:00 PM &#8211; Saturday, 2:00 PM</td>
+		</tr>
+		<tr class="GAtableText">
+			<td>8</td>
+			<td>Take a shower</td>
+			<td>Saturday, 8:30 PM &#8211; Saturday 8:45 PM</td>
+		</tr>
+		<tr class="GAtableText">
+			<td>9</td>
+			<td>Organize a Slumber Party</td>
+			<td>Saturday, 9:00 PM &#8211; Sunday, 6:00 AM</td>
+		</tr>
+		<tr class="GAtableText">
+			<td>10</td>
+			<td>Participate in an &quot;All you can eat&quot; and &quot;All you can drink&quot; challenge</td>
+			<td>Saturday, 9:01 PM &#8211; Saturday, 11:59 PM</td>
+		</tr>
+	</tbody>
+</table>
+</p>
+<p>
+	He now wishes to take advantage of as many as he can.  Such careful planning requires some cleverness, but his mind has gone on vacation too. This is John Smith&#8217;s problem and he needs our help.
+</p>
+<p>
+	Could we help him have a nice holiday?   Maybe we can! But let&#8217;s make an assumption first. As John is a meticulous programmer, once he agrees on something, he sticks to the plan. So, individual activities may either be chosen or not.  For each of the two choices regarding the first activity, we can make another two choices regarding the second. After a short analysis, we find out that we have 2 ^ N possible choices, in our case 1024.  Then, we can check each one individually to see whether it abides the time restrictions or not. From these, finding the choice with the most activities selected should be trivial. There are quite a lot of alternatives, so John would need to enlist the help of his tired computer. But what happens if we have 50 activities? Even with the most powerful computer in the world, handling this situation would literally take years. So, this approach is clearly not feasible.
+</p>
+<p>
+	Let&#8217;s simply the problem and trust our basic instinct for a moment. A good approach may be to take the chance as the first opportunity arises. That is, if we have two activities we can follow and they clash, we choose the one that starts earlier in order to save some time. In this case John will start his first evening by debugging his room. Early the next morning, he has a plane to catch. It is less than a day, and he has already started the second activity. This is great! Actually, <strong>the best choice</strong> for now. But what happens next? Spending 5 days in Hawaii is time consuming and by Saturday evening, he will still have only two activities performed.  Think of all the activities he could have done during this five day span! Although very fast and simple, this approach is unfortunately not accurate.
+</p>
+<p>
+	We still don&#8217;t want to check for every possible solution, so let&#8217;s try another trick. Committing to such a time intensive activity like the exotic trip to Hawaii can simply be avoided by selecting first the activity which takes the least amount of time and then continuing this process for the remaining activities that are compatible with those already selected. According to the previous schedule, first of all we choose the shower. With only 15 minutes consumed, this is by far the <strong>best local choice</strong>. What we would like to know is whether we can still keep this <strong>&quot;local best&quot;</strong> as the other compatible activities are being selected. John&#8217;s schedule will look like this:
+</p>
+<ul>
+	<li>Take a shower (15 minutes)</li>
+	<li>Participate in the topcoder Single Round Match (2 hours)</li>
+	<li>Participate in an &quot;All you can eat&quot; and &quot;All you can drink&quot; challenge (2 hours 58 minutes)</li>
+	<li>Debug the room (3 hours)</li>
+	<li>Attend the Rock Concert (4 hours)</li>
+	<li>Have some paintball fun (6 hours)</li>
+</ul>
+<p>
+	Out of the 10 possible activities, we were able to select 6 (which is not so bad).  We now run the slow but trustworthy algorithm to see if this is actually the best choice we can make.  And the answer is indeed 6. John is very appreciative for our help, but once he returns from the holiday, confident in our ingenious approach, he may face a serious problem: 
+</p>
+<div align="center">
+	<img src="http://community.topcoder.com/i/education/greedyAlg1.gif" alt="" border="0" />
+</div>
+<p>
+	By going for the short date, he misses both the school exam and the match of his favorite team. Being the topcoders that we are, we must get used to writing reliable programs. A single case which we cannot handle dooms this approach to failure.
+</p>
+<p>
+	What we generally have to do in situations like this is to analyze what might have caused the error in the first place and act accordingly to avoid it in the future. Let&#8217;s look again at the previous scenario. The dating activity clashes with both the exam and the match, while the other two only clash with the date.  So, the idea almost comes from itself.  Why not always select the activity that produces the minimum amount of clashes with the remaining activities? Seems logical &#8211; it all makes sense now! We&#8217;ll try to prove that this approach is indeed correct.  Suppose we have already selected an activity X and try to check if we could have selected two activities A and B that clash with X instead. A and B should of course not clash, otherwise the final result will not improve. But now, we are back to the previous case (X has two clashes, while A and B have only one). If this is the case, A and B are selected from the beginning. The only way to disprove our assumption is to make A and B clash more, without affecting other activities except X. This is not very intuitive, but if we think it through we can (unfortunately) build such a case: 
+</p>
+<div align="center">
+	<img src="http://community.topcoder.com/i/education/greedyAlg2.gif" alt="" border="0" />
+</div>
+<p>
+The activities represented by the blue lines are the optimal choice given the above schedule. But as the activity in red produces only 2 clashes, it will be chosen first. There are 4 compatible activities left before, but they all clash with each other, so we can only select one. The same happens for the activities scheduled after, leaving space for only one more choice. This only gives us 3 activities, while the optimum choice selects 4.
+</p>
+<p>
+	So far, every solution we came up with had a hidden flaw. It seems we have to deal with a devilish problem. Actually, this problem has quite an elegant and straightforward solution. If we study the figure above more carefully, we see that the blue activity on the bottom-left is the only one which finishes before the &quot;timeline&quot; indicated by the thin vertical bar. So, if we are to choose a single activity, choosing the one that ends first (at a time <strong>t1</strong>), will leave all the remaining time interval free for choosing other activities. If we choose any other activity instead, the remaining time interval will be shorter. This is obvious, because we will end up anyway with only one activity chosen, but at a time <strong>t2 &gt; t1</strong>. In the first case we had available all the time span between <strong>t1</strong> and <strong>finish</strong> and that <strong>included</strong> the time between t2 and finish. Consequently, there is no disadvantage in choosing the activity that finishes earlier.  The advantage may result in the situation when we are able to insert another activity that starts between <strong>t1</strong> and <strong>t2</strong> and ends up before the end of any activity that starts after time <strong>t2</strong>.
+</p>
+<p>
+	Known as the <strong>&quot;Activity Selection&quot;</strong>, this is a standard problem that can be solved by the <strong>Greedy Method</strong>. As a greedy man takes as much as he can as often as he can, in our case we are choosing at every step the activity that finishes first and do so every time there is no activity in progress. The truth is we all make greedy decisions at some point in our life. When we go shopping or when we drive a car, we make choices that seem best for the moment. Actually, there are two basic ingredients every greedy algorithm has in common:
+</p>
+<ul>
+	<li><strong>Greedy Choice Property</strong>:  from a local optimum we can reach a global optimum, without having to reconsider the decisions already taken.</li>
+	<li><strong>Optimal Substructure Property</strong>: the optimal solution to a problem can be determined from the optimal solutions to its subproblems.</li>
+</ul>
+<p>The following pseudo code describes the optimal activity selection given by the &quot;greedy&quot; algorithm proven earlier:</p>
+<pre class="codeBox">
+Let N denote the number of activities and
+{I}  the activity I  ( 1 &lt;= I &lt;= N )
+For each {I}, consider S[I] and F[I] its starting and finishing time
+Sort the activities in the increasing order of their finishing time
+- that is, for every I &lt; J we must have F [I] &lt;= F [J]
+
+<font color="blue">//  A denotes the set of the activities that will be selected</font>
+A = {1}
+<font color="blue">//  J denotes the last activity selected</font>
+J = 1
+For I = 2  to N
+<font color="blue">// we can select activity 'I' only if the last activity
+// selected has already been finished</font>
+      If S [I] &gt;= F [J]
+<font color="blue">//  select activity 'I'</font>
+                A = A + {I}
+<font color="blue">// Activity 'I' now becomes the last activity selected</font>
+                J = I
+      Endif
+Endfor
+Return A
+</pre>
+<p>
+<p>
+	After applying the above algorithm, Johnny&#8217;s &quot;Fun Plan&quot; would look like this:
+</p>
+<ul>
+	<li>Eliminate all the bugs and take some time to rest</li>
+	<li>Tuesday is for chess, prepare to beat them all</li>
+	<li>A whole day of Starcraft follows, this should be fun</li>
+	<li>The next two days are for recovery</li>
+	<li>As for the final day, get a few rating points on topcoder, take a shower and enjoy the versatile food and the good quality wine</li>
+</ul>
+<p>
+The problem of John Smith is solved, but this is just one example of what Greedy can do. A few examples of real topcoder problems will help you understand the concept better. But before moving on, you may wish to practice a little bit more what you have read so far on a problem similar with the Activity Selection, named <a href="http://www.topcoder.com/stat?c=problem_statement&amp;pm=2977&amp;rd=5880">Boxing</a>.
+</p>
+<p>
+	<strong>BioScore</strong><br />
+	In this problem you are asked to maximize the average homology score for all the pairs in the set. As an optimal solution is required, this may be a valuable clue in determining the appropriate method we can use. Usually, this kind of problems can be solved by dynamic programming, but in many cases a Greedy strategy could also be employed.
+</p>
+<p>
+	The first thing we have to do here is to <strong>build the frequency matrix</strong>.  This is an easy task as you just have to compare every pair of two sequences and count the occurrences of all the combinations of nucleic acids (AA, AC, AG, AT, CA, CC, CG, CT, GA, GC, GG, GT, TA, TC, TG, TT).  Each of these combinations will be an element in the matrix and its value will represent the total number of occurrences. For example, let&#8217;s take the set { &quot;ACTAGAGAC&quot;, &quot;AAAAAAAAA&quot;, &quot;TAGTCATAC&quot;, &quot;GCAGCATTC&quot; }  used in Example 2. <br />
+</p>
+<div align="center">
+	<img src="http://community.topcoder.com/i/education/greedyAlg3.gif" alt="" border="0" />
+</div>
+<p>
+In the bottom-right part of the figure above, you can see the resulting frequency matrix. Let us denote it by <strong>F</strong> What we have to do from now is to find another matrix <strong>S</strong> such that the sum of the 16 corresponding products of the type <strong>F[I,J] * S[I,J]</strong> (1 &lt;= I,J &lt;= 4) is maximized.
+</p>
+<p>
+	Now, let&#8217;s look at the matrix restrictions and analyze them one by one:
+</p>
+<p>
+	<strong>1) The sum of the 16 entries must be 0.</strong>
+</p>
+<p>
+	This is more like a commonsense condition. With all the elements in <strong>F</strong> positive, the final score tends to increase as we increase the elements in S. But because the sum must be kept at 0, in order to increase an element, we&#8217;ll have to decrease others. The challenge of this problem resides in finding the optimal distribution.
+</p>
+<p>
+	<strong>2) All entries must be integers between -10 and 10 inclusive</strong>
+</p>
+<p>
+	Another commonsense condition! Our search space has been drastically reduced, but we are still left with a lot of alternatives.
+</p>
+<p>
+	<strong>3) It must be symmetric ( score(x,y) = score(y,x) )</strong>
+</p>
+<p>
+	Because of the symmetry, we must attribute the same homology score to combinations like &quot;AC&quot; and &quot;CA&quot;. As a result, we can also count their occurrences together. For the previous example, we have the set of combinations with the following frequencies:
+</p>
+<table class="formFrame" width="400" cellpadding="6" cellspacing="0" align="center" style="visibility: visible;">
+	<tbody>
+		<tr class="bodyText">
+			<td>AA:  14</td>
+			<td>CC: 3</td>
+			<td>GG: 0</td>
+			<td>TT: 1</td>
+		</tr>
+		<tr class="bodyText">
+			<td>AC + CA: 11</td>
+			<td>AG + GA: 10</td>
+			<td>AT + TA: 10</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="bodyText">
+			<td>CG + GC: 2</td>
+			<td>CT + TC:  0</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="bodyText">
+			<td>GT + TG: 3</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	An intuitive approach would be to assign a higher homology score to the combinations that appear more often. But as we must keep the score sum to 0, another problem arises. Combinations like AA, CC, GG and TT appear only once in the matrix. So, their homology score contribute less to the total sum.
+</p>
+<p>
+	<strong>4) Diagonal entries must be positive ( score(x,x)&gt;0 )</strong>
+</p>
+<p>
+	This restriction differentiates the elements on the diagonal from the others even further. Basically, we have two groups: the four elements on the diagonal (which correspond to the combinations AA, CC, GG and TT) and the six elements not on the diagonal (which correspond to the combinations AC + CA, AG + GA, AT + TA, CG + GC, CT + TC and GT +TG).  Each of these groups can have different states, depending on the value we assign to their elements.
+</p>
+<p>
+	To make things easier, <strong>for each possible state in the first group we wish to find an optimal state for the second group</strong>. As all the elements in the second group have the same property, we will try to find their optimal state by using a <strong>Greedy approach</strong>. But because the elements in the first group can take any values between 1 and 10, the sum we wish to obtain for the scores we choose in the second group has to be recalculated. It&#8217;s easy to notice that the sum of the elements in the first group can range anywhere between 4 and 40. As a result, depending on the choice we make for the first group, we&#8217;ll have to obtain a sum between -2 and -20 for the second (we shall not forget that the symmetrical elements in the matrix have been coupled together, thus they count twice in the score matrix).
+</p>
+<p>
+	Now, we have finally reached to the <strong>problem core</strong>. The solution to the entire problem depends on finding the optimal choice for the scores in the second group. If the problem has indeed the <strong>greedy choice property</strong> and the <strong>optimal substructure property</strong>, we&#8217;ll be able to pick one element form the group, assign it the best scenario and proceed with the remaining elements in the same manner.
+</p>
+<p>
+	<strong>Claim: If we always give the highest possible score to the combination that has the most occurrences in the group, we&#8217;ll obtain in the end the highest possible score for the entire group.</strong>
+</p>
+<p>
+	The first thing we have to do is to sort these six elements in matrix F. Then, we have to actually compute the corresponding score values in S. As the total score we should obtain is at least -20, one quick insight tells us that the first two elements could be given a score of 10 (if we assign -10 to all the remaining four elements, -20 can still be achieved). We know as well that the final score is less than 0.  Because we want to maximize the scores for the first elements, the last three elements can only be -10 (in the best case the score sum of the elements is -2 and then, we assign scores in the following manner: [10, 10, 8, -10, -10, -10]). Finally, the value of the third element will depend on the choices we make for the first group. From the maximum of 10, we subtract half of the score sum of the elements in the first group (we should note here that the aforementioned sum must be even).
+</p>
+<p>
+	Now, we have to make sure that our approach is indeed correct. The proof is quite straightforward, as in order keep the sum in <strong>S</strong> constant we can only decrease from the score of a combination with more occurrences and increase to the score of a combination with fewer occurrences. Let <strong>f1</strong> and <strong>f2</strong> be the frequencies of the two combinations and <strong>f1 &gt;= f2</strong>. We have f1 * s1 + f2 * s2 = X, where <strong>X</strong> is the sum we should maximize. By our <strong>greedy assumption, s1 &gt;= s2</strong>.  As s1 + s2 remains constant, the previous sum changes to: f1*(s1 &#8211; a) + f2*( s2 + a) = Y, where a is strictly greater than 0. We find out that Y &#8211; X = a * (f2 &#8211; f1). Because f1 &gt;= f2, this difference will always be less than or equal to 0.  It results that Y &lt;= X. As Y was chosen arbitrarily, it can be concluded that the initial greedy choice always gives the maximum possible score.
+</p>
+<p>
+	We apply the algorithm described above for each state of the elements in the first group and save the best result.
+</p>
+<p>
+	<strong>Representation</strong>: Instead of using the matrices <strong>F</strong> and <strong>S</strong>, <strong>we find it more convenient to use arrays for storing both the combination frequencies and their corresponding score</strong>. The first 4 elements of <strong>F</strong> will denote the frequency of the combinations AA, CC, GG and TT. The next 6 elements will denote the other possible combinations and are sorted in the decreasing order of their frequency (F[5] &gt;= F[6] &gt;= F[7] &gt;= F[8] &gt;= F[9] &gt;= F[10]). <strong>S</strong> will be an array of 10 elements such that S[I] is the score we attribute to the combination I.
+</p>
+<p>
+	The main algorithm is illustrated in the following pseudo code:
+</p>
+<pre class="codeBox">
+Best = -Infinity
+For S [1] = 1 to 10
+      For S [2] = 1 to 10
+            For S [3] = 1 to 10
+                  For S [4] = 1 to 10
+                        If  (S [1] + S [2] + S [3] + S [4]) mod 2 = 0
+                             S [5] = S[6] = 10
+                             S [7] = 10 - (S [1] + S [2] + S [3] + S[4]) / 2
+                             S [8] = S [9] = S [10] = -10
+<font color="blue">//  in Best we save the greatest average homology score</font>
+                             Best = max (Best , score (F,S))
+<font color="blue">//  obtained so far.</font>
+                       Endif
+                 Endfor
+           Endfor
+      Endfor
+Endfor
+Return Best
+</pre>
+<p>
+<p>
+	Given the score matrix (in our case the array <strong>S</strong>), we compute the final result by just making the sum of the products of the form F[I] * S[I] ( 1 &lt;= I &lt;=10) and divide it by N * (N-1) / 2 in order to obtain the average homology score.
+</p>
+<p>
+	<strong><a href="http://www.topcoder.com/stat?c=problem_statement&amp;pm=1957&amp;rd=4650">GoldMine</a></strong><br />
+	We are now going to see how a gold mine can be exploited to its fullest, by being greedy. Whenever we notice the maximum profit is involved, a greedy switch should activate. In this case, we must allocate all the miners to the available mines, such that the total profit is maximized. After a short analysis, we realize that we want to know how much money can be earned from a mine in all the possible cases. And there are not so many cases, as in each mine we can only have between 0 and 6 workers. The table below represents the possible earnings for the two mines described in the example 0 of the problem statement:
+</p>
+<table class="formFrame" width="400" cellpadding="6" cellspacing="2" align="center" style="visibility: visible;">
+	<tbody>
+		<tr class="sidebarTitle">
+			<td nowrap="nowrap"></td>
+			<td nowrap="nowrap">0 workers</td>
+			<td nowrap="nowrap">1 worker</td>
+			<td nowrap="nowrap">2 workers</td>
+			<td nowrap="nowrap">3 workers</td>
+			<td nowrap="nowrap">4 workers</td>
+			<td nowrap="nowrap">5 workers</td>
+			<td nowrap="nowrap">6 workers</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">First mine</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">57</td>
+			<td class="GAtableText">87</td>
+			<td class="GAtableText">87</td>
+			<td class="GAtableText">67</td>
+			<td class="GAtableText">47</td>
+			<td class="GAtableText">27</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">Second mine</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">52</td>
+			<td class="GAtableText">66</td>
+			<td class="GAtableText">75</td>
+			<td class="GAtableText">75</td>
+			<td class="GAtableText">66</td>
+			<td class="GAtableText">48</td>
+		</tr>
+	</tbody>
+</table>
+</p>
+<p>
+	As we are going to assign workers to different mines, we may be interested in the profit a certain worker can bring to the mine he was assigned. This can be easily determined, as we compute the difference between the earnings resulted from a mine with the worker and without.  If we only had one worker, the <strong>optimal choice</strong> would have been to allocate him in the mine where he can bring the best profit. But as we have more workers, we want to check if assigning them in the same manner would bring the <strong>best global profit</strong>.
+</p>
+<p>
+	In our example we have 4 workers that must be assigned. The table below shows the profit obtained in the two mines for each additional worker.
+</p>
+<table class="formFrame" width="400" cellpadding="6" cellspacing="2" align="center" style="visibility: visible;">
+	<tbody>
+		<tr class="sidebarTitle">
+			<td nowrap="nowrap"></td>
+			<td nowrap="nowrap">Initially</td>
+			<td nowrap="nowrap">Worker 1</td>
+			<td nowrap="nowrap">Worker 2</td>
+			<td nowrap="nowrap">Worker 3</td>
+			<td nowrap="nowrap">Worker 4</td>
+			<td nowrap="nowrap">Worker 5</td>
+			<td nowrap="nowrap">Worker 6</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">First mine</td>
+			<td class="GAtableText">-</td>
+			<td class="GAtableText">57</td>
+			<td class="GAtableText">30</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">-20</td>
+			<td class="GAtableText">-20</td>
+			<td class="GAtableText">-20</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">Second mine</td>
+			<td class="GAtableText">-</td>
+			<td class="GAtableText">52</td>
+			<td class="GAtableText">14</td>
+			<td class="GAtableText">9</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">-9</td>
+			<td class="GAtableText">-20</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	We notice that the first mine increases its profit by 57 if we add a worker, while the second by only 52. So, we allocate the first worker to the first mine.
+</p>
+<table class="formFrame" width="400" cellpadding="6" cellspacing="2" align="center" style="visibility: visible;">
+	<tbody>
+		<tr class="sidebarTitle">
+			<td nowrap="nowrap"></td>
+			<td nowrap="nowrap">Initially</td>
+			<td nowrap="nowrap">Worker 1</td>
+			<td nowrap="nowrap">Worker 2</td>
+			<td nowrap="nowrap">Worker 3</td>
+			<td nowrap="nowrap">Worker 4</td>
+			<td nowrap="nowrap">Worker 5</td>
+			<td nowrap="nowrap">Worker 6</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">First mine</td>
+			<td class="GAtableText">-</td>
+			<td class="GAtableText2">57</td>
+			<td class="GAtableText">30</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">-20</td>
+			<td class="GAtableText">-20</td>
+			<td class="GAtableText">-20</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">Second mine</td>
+			<td class="GAtableText">-</td>
+			<td class="GAtableText">52</td>
+			<td class="GAtableText">14</td>
+			<td class="GAtableText">9</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">-9</td>
+			<td class="GAtableText">-20</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	Now, an additional worker assigned to the first mine would only increase its profit by 30. We put him in the second, where the profit can be increased by 52.
+</p>
+<table class="formFrame" width="400" cellpadding="6" cellspacing="2" align="center" style="visibility: visible;">
+	<tbody>
+		<tr class="sidebarTitle">
+			<td nowrap="nowrap"></td>
+			<td nowrap="nowrap">Initially</td>
+			<td nowrap="nowrap">Worker 1</td>
+			<td nowrap="nowrap">Worker 2</td>
+			<td nowrap="nowrap">Worker 3</td>
+			<td nowrap="nowrap">Worker 4</td>
+			<td nowrap="nowrap">Worker 5</td>
+			<td nowrap="nowrap">Worker 6</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">First mine</td>
+			<td class="GAtableText">-</td>
+			<td class="GAtableText2">57</td>
+			<td class="GAtableText">30</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">-20</td>
+			<td class="GAtableText">-20</td>
+			<td class="GAtableText">-20</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">Second mine</td>
+			<td class="GAtableText">-</td>
+			<td class="GAtableText3">52</td>
+			<td class="GAtableText">14</td>
+			<td class="GAtableText">9</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">-9</td>
+			<td class="GAtableText">-20</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	The third miner would be more useful to the first mine as he can bring a profit of 30.
+</p>
+<table class="formFrame" width="400" cellpadding="6" cellspacing="2" align="center" style="visibility: visible;">
+	<tbody>
+		<tr class="sidebarTitle">
+			<td nowrap="nowrap"></td>
+			<td nowrap="nowrap">Initially</td>
+			<td nowrap="nowrap">Worker 1</td>
+			<td nowrap="nowrap">Worker 2</td>
+			<td nowrap="nowrap">Worker 3</td>
+			<td nowrap="nowrap">Worker 4</td>
+			<td nowrap="nowrap">Worker 5</td>
+			<td nowrap="nowrap">Worker 6</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">First mine</td>
+			<td class="GAtableText">-</td>
+			<td class="GAtableText2">57</td>
+			<td class="GAtableText4">30</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">-20</td>
+			<td class="GAtableText">-20</td>
+			<td class="GAtableText">-20</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">Second mine</td>
+			<td class="GAtableText">-</td>
+			<td class="GAtableText3">52</td>
+			<td class="GAtableText">14</td>
+			<td class="GAtableText">9</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">-9</td>
+			<td class="GAtableText">-20</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	As for the last miner, we can either place him in the first mine (for a zero profit) or in the second (for a profit of 14). Obviously, we assign him to the second.
+</p>
+<table class="formFrame" width="400" cellpadding="6" cellspacing="2" align="center" style="visibility: visible;">
+	<tbody>
+		<tr class="sidebarTitle">
+			<td nowrap="nowrap"></td>
+			<td nowrap="nowrap">Initially</td>
+			<td nowrap="nowrap">Worker 1</td>
+			<td nowrap="nowrap">Worker 2</td>
+			<td nowrap="nowrap">Worker 3</td>
+			<td nowrap="nowrap">Worker 4</td>
+			<td nowrap="nowrap">Worker 5</td>
+			<td nowrap="nowrap">Worker 6</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">First mine</td>
+			<td class="GAtableText">-</td>
+			<td class="GAtableText2">57</td>
+			<td class="GAtableText4">30</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">-20</td>
+			<td class="GAtableText">-20</td>
+			<td class="GAtableText">-20</td>
+		</tr>
+		<tr>
+			<td class="sidebarTitle" nowrap="nowrap">Second mine</td>
+			<td class="GAtableText">-</td>
+			<td class="GAtableText3">52</td>
+			<td class="GAtableText5">14</td>
+			<td class="GAtableText">9</td>
+			<td class="GAtableText">0</td>
+			<td class="GAtableText">-9</td>
+			<td class="GAtableText">-20</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	In the end two of the workers have been allocated to the first mine and another two to the second. The example shows us that this is indeed the choice with the best total profit.  But will our &quot;greedy&quot; approach always work?
+</p>
+<p>
+	<strong>Claim:  We obtain the maximum total profit when we assign the workers one by one to the mine where they can bring the best immediate profit.</strong>
+</p>
+<p>
+	<strong>Proof:</strong> Let A and B be two mines and a1, a2, b1, b2 be defined as below:<br />
+	a1 &#8211; the profit obtained when an additional worker is assigned to mine A<br />
+	a1 + a2 &#8211; the profit obtained when two additional workers are assigned to mine A<br />
+	b1 &#8211; the profit obtained when an additional worker is assigned to mine B<br />
+	b1 + b2 &#8211; the profit obtained when two additional workers are assigned to mine B<br />
+	Let us now consider that we have two workers to assign and a1 &gt;= b1.
+</p>
+<p>
+	Our greedy algorithm will increase the profit by a1 for the first worker and by max (a2, b1) for the second worker.  The total profit in this case is <strong>a1+max(a2,b1)</strong>.  If we were to choose the profit b1 for the first worker instead, the alternatives for the second worker would be a profit of a1 or a profit of b2.
+</p>
+<p>
+	In the first case, the total profit would be b1+a1 &lt;= a1 + max (a2,b1).<br />
+	In the second case, the total profit would be b1+b2. We need to prove that b1+b2 &lt;= a1+max(a2,b1).  But b2 &lt;= b1 as <strong>the profit of allocating an extra worker to a mine is always higher or equal with the profit of allocating the next extra worker to that mine</strong>.
+</p>
+<table class="formFrame" width="400" cellpadding="6" cellspacing="2" align="center" style="visibility: visible;">
+	<tbody>
+		<tr class="sidebarTitle">
+			<td nowrap="nowrap">Gold Mine Status</td>
+			<td nowrap="nowrap">Profit from extra-worker 1</td>
+			<td nowrap="nowrap">Profit from extra-worker 2</td>
+		</tr>
+		<tr class="GAtableText">
+			<td nowrap="nowrap">number of ores &gt; number of workers + 2</td>
+			<td>60</td>
+			<td>60</td>
+		</tr>
+		<tr class="GAtableText">
+			<td nowrap="nowrap">number of ores = number of workers + 2</td>
+			<td>60</td>
+			<td>50</td>
+		</tr>
+		<tr class="GAtableText">
+			<td nowrap="nowrap">number of ores = number of workers + 1</td>
+			<td>50</td>
+			<td>-20</td>
+		</tr>
+		<tr class="GAtableText">
+			<td nowrap="nowrap">number of ores &lt; number of workers + 1</td>
+			<td>-20</td>
+			<td>-20</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	As b1+b2 &lt;= a1+b2 &lt;= a1+b1 &lt;= a1+max(a2,b1), the greedy choice is indeed the best .
+</p>
+<p>
+	Coding this is not difficult, but one has to take into account the problem constraints (all miners must be placed, there are at most six workers in a mine and if a worker can be optimally assigned to more than one mine, put him in the mine with the lowest index).
+</p>
+<p>
+	<a name="worldpeace" id="worldpeace"></a> <strong><a href="http://www.topcoder.com/stat?c=problem_statement&amp;pm=2420&amp;rd=5850">WorldPeace</a></strong><br />
+	The greedy algorithms we have seen so far work well in every possible situation as their correction has been proven. But there is another class of optimization problems where Greedy Algorithms have found their applicability. This category mostly includes NP-complete problems (like the <a href="http://www.tsp.gatech.edu/">Traveling Salesman Problem</a>)  and here, one may prefer to write an heuristic based on a greedy algorithm than to wait &#8230; The solution is not always the best, but for most real purposes, it is good enough. While this problem is not NP, it is an excellent example of how a simple greedy algorithm can be adapted to fool not only the examples, but also the carefully designed system tests. Such an algorithm is not very hard to come with and after a short analysis we notice that in order to maximize the total number of groups <strong>it is always optimal to form a group from the k countries that have the highest number of citizens</strong>. We apply this principle at every single step and then sort the sequence again to see which are the next k countries having the highest number of citizens. This idea is illustrated in the following pseudo code:
+</p>
+<pre class="codeBox">
+Groups = 0
+Repeat
+<font color="blue">// sorts the array in decreasing order</font>
+       Sort (A)
+       Min= A[K]
+       If Min &gt; 0 Groups = Groups + 1
+        For I = 1 to K
+               A[I] = A[I] - 1
+        Endfor
+Until  Min = 0
+Return Groups
+</pre>
+<p>
+	Unfortunately, a country can have up to a billion citizens, so we cannot afford to make only one group at a time. Theoretically, for a given set of k countries, we can make groups until all the citizens in one of these countries have been grouped. And this can be done in a single step:
+</p>
+<pre class="codeBox">
+Groups = 0
+Repeat
+<font color="blue">// sorts the array in decreasing order</font>
+       Sort (A)
+       Min= A[K]
+       Groups = Groups + Min
+        For I = 1 to K
+               A[I] = A[I] - Min
+        Endfor
+Until  Min = 0
+Return Groups
+</pre>
+<p>
+	The execution time is no longer a problem, but it is the algorithm! As we check it on the example 0, our method returns 4 instead of 5. The result returned for the examples 1, 2 and 3 is correct. As for the last example, instead of making 3983180234 groups, we are able to make 3983180207. Taking into account the small difference, we may say that our solution is <strong>pretty good</strong>, so maybe we can refine it more on this direction.
+</p>
+<p>
+	So far, we have two algorithms:
+</p>
+<ul>
+	<li>a first greedy algorithm that is accurate, but not fast enough</li>
+	<li>a second greedy algorithm that is fast, but not very accurate.</li>
+</ul>
+<p>
+What we want to do is to optimize accuracy as much as we can, without exceeding the execution time limit. Basically, we are looking for <strong>a truce between speed and accuracy</strong>. The only difference in the two algorithms described above is the number of groups we select at a given time.  The compromise we will make is to select an arbitrarily large number of groups in the beginning, and as we approach the end to start being more cautious. When we are left with just a few ungrouped citizens in every country, it makes complete sense to use the safe brute force approach. In the variable <strong>Allowance</strong> defined in the algorithm below, we control the number of groups we want to make at a given moment.
+</p>
+<pre class="codeBox">
+Groups = 0
+Repeat
+<font color="blue">// sorts the array in decreasing order</font>
+       Sort (A)
+       Min= A[K]
+       Allowance = (Min+999) / 1000
+       Groups = Groups + Allowance
+        For I = 1 to K
+               A[I] = A[I] - Allowance
+        Endfor
+Until  Min = 0
+Return Groups
+</pre>
+<p>
+	If this approach is correct indeed, remains to be seen.  Despite the fact it escaped both Tomek&#8217;s keen eyes and system tests, it is very likely that the result is not optimal for all the set of possible test cases. This was just an example to show that a carefully chosen refinement on a simple (but obvious faulty) greedy approach can actually be the &quot;right&quot; way. For more accurate solutions to this problem, see the <a href="http://community.topcoder.com/tc?module=Static&amp;d1=match_editorials&amp;d2=srm204">Match Editorial</a>.
+</p>
+<p>
+	<strong>Conclusion</strong><br />
+	Greedy algorithms are usually easy to think of, easy to implement and run fast. Proving their correctness may require rigorous mathematical proofs and is sometimes insidious hard.  In addition, greedy algorithms are infamous for being tricky. Missing even a very small detail can be fatal.  But when you have nothing else at your disposal, they may be the only salvation. With backtracking or dynamic programming you are on a relatively safe ground.  With greedy instead, it is more like walking on a mined field. Everything looks fine on the surface, but the hidden part may backfire on you when you least expect. While there are some standardized problems, most of the problems solvable by this method call for heuristics. There is no general template on how to apply the greedy method to a given problem, however the problem specification might give you a good insight. Advanced mathematical concepts such as <a href="http://mathworld.wolfram.com/Matroid.html">matroids</a> may give you a recipe for proving that a class of problems can be solved with greedy, but it ultimately comes down to the keen sense and experience of the programmer. In some cases there are a lot of greedy assumptions one can make, but only few of them are correct (see the <a href="#worldpeace">Activity Selection Problem</a>). In other cases, a hard problem may hide an ingenious greedy shortcut, like there was the case in the last problem discussed, <a href="#worldpeace">WorldPeace</a>.  And this is actually the whole beauty of greedy algorithms! Needless to say, they can provide excellent challenge opportunities&#8230;
+</p>
+<p>
+	A few final notes
+</p>
+<ul>
+	<li>a problem that seems extremely complicated on the surface (see <a href="http://www.topcoder.com/stat?c=problem_statement&amp;pm=2894&amp;rd=5853">TCSocks</a>) might signal a greedy approach.</li>
+	<li>problems with a very large input size (such that a n^2 algorithm is not fast enough) are also more likely to be solved by greedy than by backtracking or <a href="http://www.topcoder.com/tc?module=Static&amp;d1=tutorials&amp;d2=dynProg">dynamic programming</a>. </li>
+	<li>despite the rigor behind them, you should look to the greedy approaches through the eyes of a detective, not with the glasses of a mathematician.</li>
+</ul>
+<table class="bodyText" cellpadding="10" cellspacing="0" align="center" style="visibility: visible;">
+	<tbody>
+		<tr class="bodyText">
+			<td align="center"><strong>A good detective</strong><br />
+				<div align="center">
+					<img src="http://community.topcoder.com/i/education/greedyAlg4.gif" alt="" border="0" />
+			</div></td>
+			<td align="center"><strong>Greedy and lucky</strong><br />
+				<div align="center">
+					<img src="http://community.topcoder.com/i/education/greedyAlg5.gif" alt="" border="0" />
+			</div></td>
+			<td align="center"><strong>Greedy and not so lucky</strong><br />
+				<div align="center">
+					<img src="http://community.topcoder.com/i/education/greedyAlg6.gif" alt="" border="0" />
+			</div></td>
+		</tr>
+	</tbody>
+</table>
+<ul>
+	<li>in addition, study some of the standard greedy algorithms to grasp the concept better (<a href="http://www-cse.uta.edu/~holder/courses/cse2320/lectures/l15/node3.html">Fractional Knapsack Problem</a>, <a href="http://www-b2.is.tokushima-u.ac.jp/~ikeda/suuri/dijkstra/Prim.shtml">Prim Algorithm</a>, <a href="http://www-b2.is.tokushima-u.ac.jp/~ikeda/suuri/kruskal/Kruskal.shtml">Kruskal Algorithm</a>, <a href="http://www-b2.is.tokushima-u.ac.jp/~ikeda/suuri/dijkstra/Dijkstra.shtml">Dijkstra Algorithm</a>, <a href="http://www.cs.duke.edu/csed/poop/huff/info/torials&amp;d2=index">Huffman Coding</a>, <a href="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html">Optimal Merging</a>, <a href="http://www.owlnet.rice.edu/~comp314/04spring/lec/week6/Topological.htm">Topological Sort</a>).</li>
+</ul>
+<p>
+	<strong>Further Problems</strong><br />
+	<strong>Level 1</strong><br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=3450&amp;rd=5868">GroceryBagger</a> &#8211; SRM 222<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=2235&amp;rd=5070">FanFailure</a> &#8211; SRM 195<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=3002&amp;rd=5863">PlayGame</a> &#8211; SRM 217<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=1119&amp;rd=5879">SchoolAssembly</a> &#8211; TCO04 Round 2<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=2984&amp;rd=5862">RockStar</a> &#8211; SRM 216<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=2312&amp;rd=5850">Apothecary</a> &#8211; SRM 204<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=2977&amp;rd=5880">Boxing</a> &#8211; TCO04 Round 3<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=2945&amp;rd=5884">Unblur</a> &#8211; TCO04 Semifinal Room 3<br />
+</p>
+<p>
+	<strong>Level 2</strong><br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=3042&amp;rd=5863">Crossroads</a> &#8211; SRM 217<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=2894&amp;rd=5853">TCSocks</a> &#8211; SRM 207<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=2982&amp;rd=5881">HeatDeath</a> &#8211; TCO04 Round 4<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=3038&amp;rd=5882">BioScore</a> &#8211; TCO04 Semifinal Room 1<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=2347&amp;rd=5870">Rationalization</a> &#8211; SRM 224<br />
+</p>
+<p>
+	<strong>Level 3</strong><br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=1957&amp;rd=4650">GoldMine</a> &#8211; SRM 169<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=2236&amp;rd=5879">MLBRecord</a> &#8211; TCO04 Round 2<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=3076&amp;rd=5866">RearrangeFurniture</a> &#8211; SRM 220<br />
+	<a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=2420&amp;rd=5850">WorldPeace</a> &#8211; SRM 204<br />
+</p>
+<style>
+.formFrame { background: #f5f5f5; margin: auto; }.formFrame td { border: 1px solid #ccc; padding: 5px; }.sideNote {background: #f5f5f5; margin: 15px; padding: 15px; border: 1px solid #eee;}pre {background: #f5f5f5; margin: 15px; padding: 15px; border: 1px solid #eee; overflow: scroll;}p{padding-bottom:0 !important;}
+</style>
+					
+
+						<!-- /.pageContent -->
+
+					</div>
+					<!-- /.mainStream -->
+
+					<aside class="sideStream  grid-1-3">
+								<div class="textwidget"><div style="display: inline-block; width: 320px; height: 44px; overflow: hidden; background-color: #f1f1f1; padding:5px;">
+           <p style="padding-top: 12px; padding-left: 7px; font-size: 22px">
+    More Resources</p>
+       </div>
+
+
+	  <br />
+<p style="padding-top: 12px; padding-left: 10px; line-height: 150%"><a href="http://www.topcoder.com/community/data-science/data-science-tutorials/">Member Tutorials </a><br />
+Read more than 40 data science tutorials written by topcoder members. </p>
+<p style="padding-top: 12px; padding-left: 10px; line-height: 150%"><a href="http://www.topcoder.com/community/data-science/data-science-editorials/">Problem Set Analysis </a><br />
+Read editorials explaining the problem and solution for each Single Round Match (SRM). </p>
+<p style="padding-top: 12px; padding-left: 10px; line-height: 150%"><a href="http://www.topcoder.com/community/data-science/getting-started-in-data-science/">
+Data Science Guide</a><br />
+New to topcoder's data science track? Read this guide for an overview on how to get started in the arena and how competitions work.</p>
+<p style="padding-top: 12px; padding-left: 10px; line-height: 150%"><A href="http://help.topcoder.com">Help Center </a><br />
+Need specifics about the process or the rules? Everything you need to know about competing at topcoder can be found in the Help Center.</p>
+<p style="padding-top: 12px; padding-left: 10px; line-height: 150%"><a href="http://apps.topcoder.com/forums/">Member Forums</a> <br />
+Join your peers in our member forums and ask questions from the real experts - topcoder members!</p></div>
+							</aside>
+
+					<!-- /.sideStream -->
+					<div class="clear"></div>
+				</div>
+				<!-- /.rightSplit -->
+			</div>
+		</article>
+		<!-- /#mainContent -->
+<footer class="bottom-footer">
+  <!-- Footer links -->
+  <nav class="menu-item">
+    <ul class="submenu">
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="/sitemap" class="menu-link">SITEMAP</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="/about" class="menu-link">ABOUT US</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="https://help.topcoder.com/hc/en-us/articles/219069687-Contact-Support" class="menu-link">CONTACT US</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://help.topcoder.com" target="_blank" class="menu-link">HELP CENTER</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://topcoder.com/community/how-it-works/privacy-policy/" class="menu-link">PRIVACY POLICY</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://topcoder.com/community/how-it-works/terms/" class="menu-link">TERMS</a></li>
+    </ul>
+    <!-- Social links -->
+  </nav>
+  <div class="social-links">
+    <p>Topcoder is also on</p><a href="https://www.facebook.com/topcoder" target="fbwindow" class="fb-link"></a><a href="http://www.twitter.com/topcoder" target="twwindow" class="twitter-link"></a><a href="https://www.linkedin.com/company/topcoder" target="liwindow" class="linkedin-link"></a><a href="https://plus.google.com/u/0/b/104268008777050019973/104268008777050019973/posts" target="gpwindow" class="google-link"></a>
+  </div>
+  <p class="copyright-notice">© 2016 Topcoder. All Rights Reserved</p>
+</footer>
+</div>
+<!-- /.content -->
+</div>
+<!-- /#wrapper -->
+
+
+<div id="bgModal"></div><!-- background modal -->
+<div id="bgOverlapModal"></div><!-- background modal -->
+<div id="bgLoadingModal"><span></span></div><!-- background loading -->
+<div id="thanks" class="modal">
+  <a href="javascript:;" class="closeBtn closeModal"></a>
+
+  <div class="content">
+    <h2>Thanks for joining!</h2>
+
+    <p>We have sent you an email with activation instructions.<br/>If you do not receive that email within 1 hour,
+      please email <a href="mailto:support@topcoder.com">support@topcoder.com</a>.</p>
+
+    <div>
+      <a href="javascript:;" class="btn closeModal redirectOnConfirm">Close</a>
+    </div>
+  </div>
+</div><!-- END #thanks -->
+<div id="registerSuccess" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Registered!</h2>
+    <p class="success">Thank you for registering. You may now download the challenge files and participate in the challenge forums.</p>
+    <p class="submitBtn">
+      <a class="btn closeModalReg" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #registerSuccess -->
+<div id="registerFailed" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Info</h2>
+    <p class="failedMessage"></p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #registerFailed -->
+
+<div id="showSubmission" class="modal">
+    <a href="javascript:;" class="btnClose closePopupModal"></a>
+    <div class="content">
+       <img alt="" style="width:910px; height:850px">
+    </div>
+</div><!-- END #show submission -->
+
+<div id="filterSavedSuccess" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Success</h2>
+    <p class="success">Your filters have been saved and stored in the "My Filters" dropdown list.</p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #filterSavedSuccess -->
+
+<div id="filterSavedFailed" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Info</h2>
+    <p class="failedMessage"></p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #filterSavedFailed -->
+
+<div id="designSubmissionCommentExample" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Comment Examples</h2>
+
+    <strong>Example 1:</strong><br>
+    The logo represents movement and "taking action" rather than being stagnant.
+    The colors I chose signify power and give the brand a strong feel.<br><br>
+
+    <strong>Example 2:</strong><br>
+    This is a revised version of my previous submission. Changes include a new
+    header graphic, new font choices for the pop-up box and new icons for the
+    widget on the fourth page.<br><br>
+
+    <strong>Example 3:</strong><br>
+    This is my Round 2 submission. I have implemented all of the feedback you
+    gave me after Round 1 and I hope you like the changes.<br><br>
+  </div>
+</div><!-- END #show submission -->
+
+<div id="typeTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <p class="contestTy"></p>
+    </div>
+    <div class="arrow"></div>
+  </div>
+</div><!-- /.tooltip -->
+<div id="winnerTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <div class="winnerInfo"></div>
+    </div>
+    <div class="arrow alt"></div>
+  </div>
+</div><!-- /.tooltip -->
+<div id="badgeTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <p class="earnedOn"></p>
+    </div>
+    <div class="data">
+      <p class="currentlyEarned"><span></span></p>
+    </div>
+    <div class="arrow"></div>
+  </div>
+</div><!-- /.tooltip -->
+<link rel='stylesheet' id='ng-grid-css'  href='//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.10/ng-grid.css?ver=3.9.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.topcoder.com/wp-content/plugins/TcApi-hookup/includes/js/Selectyze.jquery.js'></script>
+<script type='text/javascript' src='https://www.topcoder.com/wp-content/plugins/TcApi-hookup/includes/js/tcapi.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
+<script type='text/javascript' src='//cdn.auth0.com/w2/auth0-1.6.4.js'></script>
+<script type='text/javascript' src='https://www.topcoder.com/mf/dist/js/default.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-animate.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-route.min.js'></script>
+<script type='text/javascript' src='https://www.topcoder.com/wp-includes/js/underscore.min.js?ver=1.6.0'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/restangular/1.4.0/restangular.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.10/ng-grid.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.10/ng-grid-flexible-height.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-cookies.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js'></script>
+<script>
+  window.prerenderReady = false;
+  function getParameterByName(name, source) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(source || location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+  function getHashParameterByName(name, source) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\#&]" + name + "=([^&#]*)"),
+    results = regex.exec(source || location.hash);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+</script>
+
+<!-- Start of topcoder Zendesk Widget script -->
+<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("https://assets.zendesk.com/embeddable_framework/main.js","topcoder.zendesk.com");
+/*]]>*/</script>
+<!-- End of topcoder Zendesk Widget script -->
+
+<script>
+(function() {
+  var headerApp = angular.module('tc.header', [])
+  headerApp.config(function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Allow same origin resource loads.
+      'self',
+      // Allow loading from subdomains.  Notice the difference between * and **.
+      'http://*.topcoder.com/**',
+      'https://*.topcoder.com/**',
+      'http://*.topcoder-qa.com/**',
+      'https://*.topcoder-qa.com/**',
+      'http://*.topcoder-dev.com/**',
+      'https://*.topcoder-dev.com/**'
+    ]);
+  });
+  headerApp.directive('ngHeaderBootstrap', function(){
+    return {
+      restrict: 'C',
+      templateUrl: '/mf/js/app/header/partials/header-nav.html',
+      controller: function($scope, $timeout){
+        $scope.vm = vm = {};
+        $scope.main = {};
+        $scope.main.menuVisible = false;
+        vm.isAuth = false;
+
+        if (app.isLoggedIn()) {
+          vm.isAuth = true;
+          app.getHandle(function(handle) {
+            $.get(tcconfig.apiURL + '/users/' + handle, function(data) {
+              var photoLink = data['photoLink'];
+              if (photoLink) {
+                if (photoLink.indexOf('//') == -1) {
+                  photoLink = tcconfig.communityURL + data['photoLink']
+                }
+              } else {
+                photoLink = tcconfig.communityURL + '/i/m/nophoto_login.gif';
+              }
+              
+              var color = '';
+              var ratings = data['ratingSummary'];
+              if (ratings) {
+                var maxRating = 0;
+                for (var i = 0; i < ratings.length; i++) {
+                  if (maxRating < ratings[i]['rating']) {
+                    maxRating = ratings[i]['rating'];
+                    color = ratings[i]['colorStyle'].split(": ")[1];
+                  }
+                }
+              } else if (data['isPM'] == true) {
+                color = '#FF9900';
+              }
+              
+              $timeout(function() {
+                vm.handleStyle = { color: color };
+                vm.photoURL = photoLink;
+              });
+            });
+
+            $timeout(function() {
+              vm.userHandle = handle;
+              vm.userMenu = [
+                { 'href': '/my-dashboard', 'text': 'DASHBOARD', 'icon': '/mf/i/nav/dashboard.svg' },
+                { 'href': '/members/' + handle, 'text': 'MY PROFILE', 'icon': '/mf/i/nav/profile.svg' },
+                { 'href': 'https:' + tcconfig.communityURL + '/PactsMemberServlet?module=PaymentHistory&full_list=false', 'text': 'PAYMENTS', 'icon': '/mf/i/nav/wallet.svg' },
+                { 'href': '/settings/profile', 'text': 'SETTINGS', 'icon': '/mf/i/nav/settings.svg' },
+              ];
+            });
+          });
+        }
+
+        vm.menuHeaders = [ 'compete', 'learn', 'community' ];
+        vm.menuLinks =
+        {
+          'compete': [
+              { 'href':  "/challenges/", 'text': 'ALL CHALLENGES', 'icon': '/mf/i/nav/rocket.svg' },
+              { 'href':  'https:' + tcconfig.arenaURL, 'text': 'COMPETITIVE PROGRAMMING', 'icon': '/mf/i/nav/track-cp.svg', 'target': '_blank' },
+          ],
+          'learn': [
+              { 'href': '/getting-started/', 'text': 'GETTING STARTED', 'icon': '/mf/i/nav/rocket.svg' },
+              { 'href': '/community/design/', 'text': 'DESIGN', 'icon': '/mf/i/nav/book-design.svg' },
+              { 'href': '/community/development/', 'text': 'DEVELOPMENT', 'icon': '/mf/i/nav/book-develop.svg' },
+              { 'href': '/community/data-science/', 'text': 'DATA SCIENCE', 'icon': '/mf/i/nav/book-data.svg' },
+              { 'href': '/community/competitive-programming/', 'text': 'COMPETITIVE PROGRAMMING', 'icon': '/mf/i/nav/book-cp.svg' },
+          ],
+          'community': [
+              { 'href': '/community/members/', 'text': 'OVERVIEW', 'icon': '/mf/i/nav/members.svg' },
+              { 'href': '/tco', 'text': 'TCO', 'icon': '/mf/i/nav/tco-generic.svg' },  
+              { 'href': '/community/member-programs/', 'text': 'PROGRAMS', 'icon': '/mf/i/nav/programs.svg' },
+              { 'href': 'https://' + tcconfig.forumsAppURL, 'text': 'FORUMS', 'icon': '/mf/i/nav/forums.svg' },
+              { 'href': '/community/statistics/', 'text': 'STATISTICS', 'icon': '/mf/i/nav/statistics.svg' },
+              { 'href': '/community/events/', 'text': 'EVENTS', 'icon': '/mf/i/nav/events.svg' },
+              { 'href': '/blog/', 'text': 'BLOG', 'icon': '/mf/i/nav/blog.svg' }
+          ]
+        };
+
+        vm.checkSubmit = function(ev) {
+          if (ev.keyCode === 13)
+            window.location.replace(tcconfig.mainURL + '/search/members/?q=' + window.encodeURIComponent(vm.searchTerm));
+        }
+
+        vm.isActive = function(href) {
+          if (window.location.pathname == href)
+            return true;
+          return false;
+        }
+
+        vm.login = function() {
+          window.location.href = tcconfig.accountAppURL + "?next=" + encodeURIComponent(window.location.href);
+        }
+
+        vm.join = function() {
+          window.location.href = tcconfig.accountAppURL + '/registration?next=' + encodeURIComponent(window.location.href);
+        }
+
+        vm.logout = function() {
+          document.cookie = 'tcsso=; path=/; domain=.' + tcconfig.domain + '; expires=' + new Date(0).toUTCString();
+          document.cookie = 'tcjwt=; path=/; domain=.' + tcconfig.domain + '; expires=' + new Date(0).toUTCString();
+          main.menuVisible = vm.isAuth = false;
+          window.location.href = '/logout';
+        }
+      }
+    };
+  });
+
+  angular.bootstrap($('.ng-header-bootstrap'), ['tc.header']);
+})();
+</script>
+
+</div>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"496af5ee90","applicationID":"5697815","transactionName":"ZlcBbBQAChBSARIKXV8dIlsSCAsNHBYDDkJdUxddSw4SBkEUDwZFHEUKXAEEEApJBwI=","queueTime":0,"applicationTime":135,"atts":"ShACGlwaGR4=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+
+</html>

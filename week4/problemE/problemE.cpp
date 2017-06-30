@@ -31,7 +31,7 @@ void printVec(const std::vector<int32_t> &vec, int n)
     std::cout << "\n";
 }
 
-bool bellmanFord(int32_t start, const graph_t &graph, int n, std::vector<int32_t> &dist, std::vector<int32_t> &pred, std::vector<int32_t> &count)
+bool bellmanFord(int32_t start, const graph_t &graph, int n, std::vector<int32_t> &dist, std::vector<int32_t> &pred, std::vector<int32_t> &count, std::vector<int32_t> &desc)
 {
     // init
     for (int u=1; u<=n; ++u)
@@ -40,24 +40,59 @@ bool bellmanFord(int32_t start, const graph_t &graph, int n, std::vector<int32_t
         pred[u] = 0;
     }
     dist[start] = 0;
+    // pred[start] = start; // ???
+
+    // for i from 1 to |V| - 1:
+    //     for (u, v) in E:
+    //         relax(u, v)
+    //
+    // relax(u, v):
+    //     if v.distance > u.distance + weight(u, v):
+    //         v.distance = u.distance + weight(u, v)
+    //         v.p = u
+
+    // for (int i=1; i<=n-1; ++i)
+    // {
+    //     for (int u=1; u<=n; ++u)
+    //     {
+    //         for (auto v : graph[u])
+    //         {
+    //             // std::cout << u << " -> " << v.node << ": " << v.weight << "\n";
+    //             if (dist[u] != INT32_MAX && dist[v.node] > dist[u] + v.weight)
+    //             {
+    //                 dist[v.node] = dist[u] + v.weight;
+    //                 pred[v.node] = u;
+    //             }
+    //         }
+    //     }
+    // }
+
+    // for (int u=1; u<=n; ++u)
+    // {
+    //     for (auto v : graph[u])
+    //     {
+    //         //d[v]> d[u] +w(u,v)
+    //         if (dist[v.node] > dist[u] + v.weight)
+    //         {
+    //             return false;
+    //         }
+    //     }
+    // }
+
+    // return true;
+
+
+
+
+
+
+
+
 
     std::deque<int32_t> Q;
-
     Q.push_back(start);
-
-    int tempCounter = 0;
     while( !Q.empty() )
     {
-        ++tempCounter;
-        // std::cout << "dist[start]: " << dist[start] << "\n";
-        // std::cout << "tempCounter: " << tempCounter << "\n";
-        if (dist[start] < 0)
-            std::cout << tempCounter << "\n";
-
-        // std::cout << "dist: ";
-        // printVec(dist, n);
-
-
         int x = Q.front();
         // std::cout << "x front: " << x << "\n";
         if(dist[x] != INT32_MAX)
@@ -70,20 +105,24 @@ bool bellmanFord(int32_t start, const graph_t &graph, int n, std::vector<int32_t
                 {
                     dist[y] = dist[x] + c;
                     pred[y] = x;
+                    desc[x] = y;
                     Q.push_back(y);
+                    //if(++count[y] > n-1)
                     if(++count[y] > n-1)
                     {
+                        std::cout << "broke at node " << y << "\n";
+                        // std::cout << "increase at " << y << "\n";
                         // std::cout << count[y] << "\n";
                         // std::cout << "negative circle!!\n";
-                        std::cout << "i: " << i << "\n";
-                        std::cout << "x: " << x << ", y: " << y << "\n";
+                        // std::cout << "i: " << i << "\n";
+                        // std::cout << "x: " << x << ", y: " << y << "\n";
                         return false;
                     }
                 }
            }
            Q.pop_front();
        }
-   }
+    }
 
    return true;
 }
@@ -114,6 +153,9 @@ int main()
             std::cin >> b_i; // to
             std::cin >> c_i; // weight
 
+            // if (a_i == b_i)
+            //     continue;
+
             graph[a_i].push_back({b_i, c_i});
             graph[b_i].push_back({a_i, -1 * c_i});
         }
@@ -121,15 +163,44 @@ int main()
         std::vector<int32_t> dist (n+1);
         std::vector<int32_t> pred (n+1);
         std::vector<int32_t> count (n+1);
+        std::vector<int32_t> desc (n+1);
 
         // std::cout << "run bellmanFord...\n";
-        bool result = bellmanFord(s, graph, n, dist, pred, count);
-        // std::cout << "result: " << result << "\n";
+        bool result = bellmanFord(s, graph, n, dist, pred, count, desc);
+        std::cout << "result: " << result << "\n";
 
-        std::cout << "dist: \n";
-        printVec(dist, n);
-        // std::cout << "pred: \n";
-        // printVec(pred, n);
+        // std::cout << "dist: \n";
+        // printVec(dist, n);
+        std::cout << "pred: \n";
+        printVec(pred, n);
+        std::cout << "desc: \n";
+        printVec(desc, n);
+
+        std::cout << "find out length: \n";
+
+        int32_t currentNode = s;
+
+        std::cout << "pred\n";
+        std::cout << currentNode << " -> " << pred[currentNode] << "\n";
+        currentNode = pred[currentNode];
+
+        std::cout << currentNode << " -> " << pred[currentNode] << "\n";
+        currentNode = pred[currentNode];
+
+        std::cout << currentNode << " -> " << pred[currentNode] << "\n";
+        currentNode = pred[currentNode];
+
+        std::cout << currentNode << " -> " << pred[currentNode] << "\n";
+        currentNode = pred[currentNode];
+
+        std::cout << currentNode << " -> " << pred[currentNode] << "\n";
+        currentNode = pred[currentNode];
+
+        std::cout << currentNode << " -> " << pred[currentNode] << "\n";
+        currentNode = pred[currentNode];
+
+
+
         // std::cout << "count \n";
         // printVec(count, n);
 

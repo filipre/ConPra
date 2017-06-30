@@ -19,7 +19,13 @@ int main()
     for (int testCase=1; testCase<=t; ++testCase)
     {
         std::cout << "Case #" << testCase << ": ";
-        std::cout << "\n";
+        // std::cout << "\n";
+
+        int n, m;
+        std::cin >> n;
+        std::cin >> m;
+
+        std::cout << std::__gcd(n, m) << "\n";
     }
 
     return 0;
