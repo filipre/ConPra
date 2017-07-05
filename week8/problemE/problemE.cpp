@@ -25,7 +25,7 @@ int64_t binom (int64_t n, int64_t k)
 void calcCoefficents(int64_t number, int64_t primeBase, std::vector<int64_t> &coeff)
 {
     // first get degree k
-    double doubleDegree = std::log(number) / std::log(primeBase);
+    // double doubleDegree = std::log(number) / std::log(primeBase);
     int64_t degree = (int64_t)(std::log(number) / std::log(primeBase));
     // std::cout << "doubleDegree: " << doubleDegree << ", degree: " << degree << "\n";
 
@@ -84,34 +84,50 @@ int main()
 
         for (int64_t number : numbers)
         {
-            std::cout << "number: " << number << ":\n";
+            // std::cout << "number: " << number << ":\n";
 
             std::vector<int64_t> n_coeff;
             calcCoefficents(n, number, n_coeff);
 
+            // std::cout << "n_coeff: ";
+            // for (int64_t i=0; i<n_coeff.size(); ++i)
+            // {
+            //     // results[i] += numbers[i];
+            //     std::cout << n_coeff[i] << " ";
+            // }
+            // std::cout << "\n";
+
             std::vector<int64_t> k_coeff;
             calcCoefficents(k, number, k_coeff);
 
+            // std::cout << "k_coeff: ";
+            // for (int64_t i=0; i<k_coeff.size(); ++i)
+            // {
+            //     // results[i] += numbers[i];
+            //     std::cout << k_coeff[i] << " ";
+            // }
+            // std::cout << "\n";
+
             int64_t diff = n_coeff.size() - k_coeff.size();
-            std::cout << "diff: " << diff << "\n";
+            // std::cout << "diff: " << diff << "\n";
             int64_t result = 1;
             for (int64_t i=0; i<k_coeff.size(); ++i)
             {
-                std::cout << "temp result: " << result << "\n";
-                std::cout << "ncoeff i: " << n_coeff[i+diff] << ", kcoeff i: " << k_coeff[i] << "\n";
+                // std::cout << "temp result: " << result << "\n";
+                // std::cout << "ncoeff i: " << n_coeff[i+diff] << ", kcoeff i: " << k_coeff[i] << "\n";
                 result = result * binom(n_coeff[i+diff], k_coeff[i]);
                 result = result % number;
             }
-            std::cout << "real result: " << result << "\n";
+            // std::cout << "real result: " << result << "\n";
             results.push_back(result);
         }
 
-        for (int64_t i=0; i<numbers.size(); ++i)
-        {
-            // results[i] += numbers[i];
-            std::cout << results[i] << " ";
-        }
-        std::cout << "\n";
+        // for (int64_t i=0; i<numbers.size(); ++i)
+        // {
+        //     // results[i] += numbers[i];
+        //     std::cout << results[i] << " ";
+        // }
+        // std::cout << "\n";
 
         int64_t solution = 0;
         for (int64_t i=0; i<numbers.size(); ++i)
@@ -133,11 +149,13 @@ int main()
             bla = bla % fullNumber;
 
             solution = solution + bla;
-            std::cout << solution << "\n";
+            // std::cout << solution << "\n";
             solution = solution % fullNumber;
-            std::cout << solution << "\n";
+            // std::cout << solution << "\n";
         }
-        // solution = solution + fullNumber;
+        
+        if (solution < 0)
+            solution = solution + fullNumber;
         //
         std::cout << solution << "\n";
     }

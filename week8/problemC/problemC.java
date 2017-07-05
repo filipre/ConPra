@@ -69,41 +69,60 @@ public class problemC {
 
 			n = size.size();
 			BigInteger result = BigInteger.valueOf(0);
+
+			/*
+			for (int i = 0; i < k; i++)
+		    {
+		        int pp = prod / num[i];
+		        result += rem[i] * inv(pp, num[i]) * pp;
+		    }
+			*/
+
 			for (int i=0; i<n; ++i)
 			{
 				BigInteger M_i = M.divide(size.get(i));
-				// System.out.println(M_i);
-				BigIntEuclidean run = BigIntEuclidean.calculate(size.get(i), M_i);
-				BigInteger x_i = M_i.multiply(run.y).multiply(rest.get(i));
-				// System.out.println(x_i);
-				result = result.add(x_i);
+				BigInteger inv = M_i.modInverse(size.get(i));
+				BigInteger prod = rest.get(i).multiply(M_i).multiply(inv);
+				result = result.add(prod);
 			}
+			result = result.mod(M);
 
-			// result < 0
-			while (result.compareTo(BigInteger.ZERO) == -1)
-			{
-				result = result.add(M);
-			}
+			// System.out.println(result);
 
-			// result > k
+			BigInteger scale = k.subtract(result).divide(M);
+			result = result.add(scale.multiply(M));
+
 			if (result.compareTo(k) == 1)
 			{
 				System.out.println("impossible");
-				continue;
-			}
-
-			if (result.compareTo(k) == 0)
-			{
-				System.out.println(result)
 			}
 			else
 			{
-				BigInteger scale = k.subtract(result).divide(M);
-				result = result.add(scale.multiply(M));
 				System.out.println(result);
 			}
 
 
+
+			// result > k
+			// if (result.compareTo(k) == 1)
+			// {
+			// 	System.out.println("impossible");
+			// 	continue;
+			// }
+
+
+
+			// if (result.compareTo(k) == 0)
+			// {
+			// 	System.out.println(result);
+			// }
+			//
+			// else
+			// {
+			// 	BigInteger scale = k.subtract(result).divide(M);
+			// 	result = result.add(scale.multiply(M));
+			// 	System.out.println(result);
+			// }
 
 		}
 	}
