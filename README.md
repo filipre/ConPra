@@ -37,12 +37,12 @@
 - [ ] Matroid-Greedy-Theorem
 
 ## Week 8: Number Theory
-- [ ] Devisibility
-- [ ] Sieve of Eratosthenes
-- [ ] Modular Arithmetic
-- [ ] gcd(), lcm()
-- [ ] Extended Euclidean Algorithm
-- [ ] Chinese Remainder Theorem
+- [x] Devisibility
+- [x] Sieve of Eratosthenes
+- [x] Modular Arithmetic
+- [x] gcd(), lcm()
+- [x] Extended Euclidean Algorithm
+- [x] Chinese Remainder Theorem
 
 ## Week 9: Dynamic Programming
 - [ ] Basic Principle
