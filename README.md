@@ -48,8 +48,8 @@
 - [ ] Basic Principle
 
 ## Week 10: Geometry
-- [ ] Point on line (segment)
-- [ ] Intersection of line (segments)
-- [ ] Point on side of line
-- [ ] Point in polygon (Ray Casting)
-- [ ] Convex Hull (Gift Wrapping, Graham’s scan)
+- [x] Point on line (segment)
+- [x] Intersection of line (segments)
+- [x] Point on side of line
+- [x] Point in polygon (Ray Casting)
+- [x] Convex Hull (Gift Wrapping, Graham’s scan)
