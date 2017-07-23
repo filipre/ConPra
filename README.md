@@ -1,26 +1,26 @@
 # Algorithms for Programming Contests
 
 ## Week 1: Introduction
-- [ ] Hello World
+- [x] Hello World
 
 ## Week 2: Data Structures
 - [ ] Binary search
-- [ ] Union Find data structure
+- [x] Union Find data structure
 
 ## Week 3: Graph Algorithms
-- [ ] Graph representation (adjacency matrix, adjacency list)
+- [x] Graph representation (adjacency matrix, adjacency list)
 - [x] DFS
 - [x] BFS
-- [ ] Topological sort
+- [x] Topological sort
 - [x] Kruskal (MST)
-- [ ] Prim (MST)
+- [x] Prim (MST)
 
 ## Week 4: Shortest Paths
 - [x] Dijkstra
 - [x] Bellman Ford
 
 ## Week 5: Maximum Flow
-- [ ] Min-Flow Max-Cut Theorem
+- [x] Min-Flow Max-Cut Theorem
 - [ ] Ford-Fulkerson
 - [ ] Dinic's algorithm
 - [ ] Push-Relabel Algorithm + Heuristics
