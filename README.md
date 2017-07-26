@@ -4,7 +4,7 @@
 - [x] Hello World
 
 ## Week 2: Data Structures
-- [ ] Binary search
+- [x] Binary search
 - [x] Union Find data structure
 
 ## Week 3: Graph Algorithms
@@ -21,8 +21,8 @@
 
 ## Week 5: Maximum Flow
 - [x] Min-Flow Max-Cut Theorem
-- [ ] Ford-Fulkerson
-- [ ] Dinic's algorithm
+- [x] Ford-Fulkerson
+- [x] Dinic's algorithm
 - [ ] Push-Relabel Algorithm + Heuristics
 
 ## Week 6: Brute Force
@@ -31,10 +31,10 @@
 - [ ] Backtracking
 
 ## Week 7: Greedy Algorithms
-- [ ] Independence system
-- [ ] Matroid
-- [ ] Independent set
-- [ ] Matroid-Greedy-Theorem
+- [x] Independence system
+- [x] Matroid
+- [x] Independent set
+- [x] Matroid-Greedy-Theorem
 
 ## Week 8: Number Theory
 - [x] Devisibility
@@ -45,7 +45,7 @@
 - [x] Chinese Remainder Theorem
 
 ## Week 9: Dynamic Programming
-- [ ] Basic Principle
+- [x] Basic Principle
 
 ## Week 10: Geometry
 - [x] Point on line (segment)
